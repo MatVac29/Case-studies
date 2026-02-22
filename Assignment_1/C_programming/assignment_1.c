@@ -43,9 +43,7 @@ void TSQR(double* A_local, int m_local, int n, double* R_final, MPI_Comm comm)
             {
                 double* R_recv = malloc(n*n*sizeof(double));
 
-                MPI_Recv(R_recv, n*n, MPI_DOUBLE,
-                         rank + step, 0, comm,
-                         MPI_STATUS_IGNORE);
+                MPI_Recv(R_recv, n*n, MPI_DOUBLE, rank + step, 0, comm, MPI_STATUS_IGNORE);
 
                 int m2 = 2*n;
                 double* R_stack = malloc(m2*n*sizeof(double));
